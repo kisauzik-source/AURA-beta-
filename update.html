@@ -180,7 +180,6 @@
             transform: scale(1.02);
         }
 
-        /* Fallback если изображение не загрузится */
         .pebble-visual .fallback-text {
             display: none;
             font-size: 0.8rem;
@@ -376,21 +375,6 @@
                 el.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
                 observer.observe(el);
             });
-
-            // Дополнительная проверка загрузки изображения: если файл отсутствует, показываем текст
-            const productImg = document.querySelector('.product-image');
-            if (productImg) {
-                productImg.addEventListener('error', function() {
-                    this.style.display = 'none';
-                    const fallback = this.nextElementSibling;
-                    if (fallback && fallback.classList.contains('fallback-text')) {
-                        fallback.style.display = 'flex';
-                        fallback.style.alignItems = 'center';
-                        fallback.style.justifyContent = 'center';
-                        fallback.style.width = '100%';
-                        fallback.style.height = '100%';
-                        fallback.style.backgroundColor = '#1a1a1a';
-                        fallback.innerText = 'AURA BRACELET\n(изображение ожидается)';
                     }
                 });
             }
